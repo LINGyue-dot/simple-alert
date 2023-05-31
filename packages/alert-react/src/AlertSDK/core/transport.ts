@@ -7,7 +7,7 @@ export function send(errorData: ErrorDataType) {
   const hash = genErrorDataHash(errorData);
 
   axios
-    .post(`${AlertStore.baseUrl}/report`, {
+    .post(`${AlertStore.options.baseUrl}/report`, {
       alertData: {
         project: AlertStore.options.project,
         env: AlertStore.options.env,

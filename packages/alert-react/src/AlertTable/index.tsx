@@ -9,12 +9,13 @@ const AlertTable: React.FC<AlertTableProps> = ({}) => {
   const [list, setList] = useState<AlertDataProps[]>([]);
 
   const getData = () => {
-    axios.get("http://123.249.35.73:3200/all").then((r) => setList(r.data.data));
+    axios.get(`${process.env.REACT_APP_BASEURL}/all`).then((r) => setList(r.data.data));
   };
 
   useEffect(() => {
     getData();
   }, []);
+  console.log(process.env)
 
   return (
     <div style={{ marginLeft: 50 }}>

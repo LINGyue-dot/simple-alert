@@ -12,9 +12,10 @@ module.exports = {
       add: [
         // process.env.NODE_ENV !== "development" &&
         new AlertPlugin({
-          project: "project1",
-          env: "test",
-          version: "1.0.0",
+          project: process.env.REACT_APP_PROJECT,
+          env: process.env.NODE_ENV,
+          version: process.env.REACT_APP_VERSION,
+          url:process.env.REACT_APP_UPLOADURL,
         }),
       ],
     },

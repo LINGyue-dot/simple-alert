@@ -33,9 +33,7 @@ const AlertComponent: React.FC<AlertComponentProps> = ({}) => {
     setVisible(true);
   };
 
-  const handleFetchError = () => {
-    fetch("http://localhost:3000/hello");
-  };
+  const handleFetchError = () => {};
 
   return (
     <div style={{ margin: 20 }}>

@@ -4,7 +4,6 @@ const path = require("path");
 const FormData = require("form-data");
 
 const rootPath = path.resolve(__dirname, "..");
-
 const sourceMapPath = path.resolve(rootPath, "build/maps/static/js");
 
 class AlertPlugin {
@@ -12,6 +11,9 @@ class AlertPlugin {
     this.options = options;
   }
   apply(compiler) {
+    if (process.env.NODE_ENV === "development") {
+      return;
+    }
     compiler.hooks.afterEmit.tapAsync("MyPlugin", (compilation, callback) => {
       // TODO promiseify ==> .then(()=>callback())
       uploadSourceMap(this.options);
@@ -35,13 +37,10 @@ function uploadSourceMap(options) {
         `${options.project}-${options.env}-${options.version}-${fileName}`
       );
       const requestOptions = {
-        host: "localhost",
-        port: 3200,
-        path: "/sourceMap",
         method: "POST",
         headers: formData.getHeaders(),
       };
-      const request = http.request(requestOptions, (res) => {});
+      const request = http.request(options.url, requestOptions, (res) => {});
       formData.pipe(request);
     });
   });

@@ -4,15 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AlertSdk from "./AlertSDK/core";
-import 'antd/dist/reset.css';
+import "antd/dist/reset.css";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 AlertSdk.init({
-  project: "project1",
-  env: "test",
-  version: "1.0.0",
+  project: process.env.REACT_APP_PROJECT!,
+  env: process.env.NODE_ENV!,
+  version: process.env.REACT_APP_VERSION!,
+  baseUrl: process.env.REACT_APP_BASEURL!,
 });
 
 root.render(

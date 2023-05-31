@@ -1,7 +1,8 @@
 export interface AlertOptionsProps {
   project: string;
   version?: string;
-  env?: "production" | "test";
+  env?: "development" | "production" | "test";
+  baseUrl: string; // 后端服务 baseUrl
 }
 
 export enum ErrorEnum {

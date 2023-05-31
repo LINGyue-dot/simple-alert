@@ -61,7 +61,7 @@ app.put("/repair", function (req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at hmttp://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 
 // 1. 上报接口

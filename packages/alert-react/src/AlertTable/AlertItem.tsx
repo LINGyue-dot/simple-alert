@@ -29,7 +29,7 @@ const AlertItem: React.FC<AlertItemProps> = ({ data, refresh }) => {
 
   const handleClick = () => {
     axios
-      .put("http://123.249.35.73:3200/repair", {
+      .put(`${process.env.REACT_APP_BASEURL}/repair`, {
         id: data.id,
       })
       .then(() => refresh())

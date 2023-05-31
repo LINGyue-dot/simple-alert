@@ -21,7 +21,6 @@ export async function getSourceCode(
   }
 
   let index = sources.indexOf(result.source);
-  console.log("index", index);
 
   let code = sourcesContent[index];
   let codeList = code.split("\n");
@@ -47,7 +46,7 @@ export async function getSourceCode(
  * @param errorData
  */
 export async function getSourMapData(data: AlertDataProps, fileName: string) {
-  const baseUrl = "http://123.249.35.73:3200/maps";
+  const baseUrl = `${process.env.REACT_APP_BASEURL}/maps`;
   const { project, env, version } = data;
   const sourceMapName = `${project}-${env}-${version}-${fileName}.map`;
   const url = baseUrl + "/" + sourceMapName;
