@@ -2,9 +2,11 @@
 
 ## 介绍
 
-一个简单的报警系统
+一个简单的报警系统，具备简单的报警功能
 
 
+
+<video src="https://typora-1300781048.cos.ap-beijing.myqcloud.com/img/202306011114257.mp4"></video>
 
 
 

@@ -15,9 +15,7 @@ class AlertPlugin {
       return;
     }
     compiler.hooks.afterEmit.tapAsync("MyPlugin", (compilation, callback) => {
-      // TODO promiseify ==> .then(()=>callback())
-      uploadSourceMap(this.options);
-      callback();
+      uploadSourceMap(this.options).then(callback);
     });
   }
 }
@@ -27,21 +25,25 @@ class AlertPlugin {
  * 将其一一上传给服务端
  */
 function uploadSourceMap(options) {
-  fs.readdir(sourceMapPath, (err, files) => {
-    files.forEach((fileName) => {
-      const originPath = path.resolve(sourceMapPath, fileName);
-      const formData = new FormData();
-      formData.append(
-        "file",
-        fs.createReadStream(originPath),
-        `${options.project}-${options.env}-${options.version}-${fileName}`
-      );
-      const requestOptions = {
-        method: "POST",
-        headers: formData.getHeaders(),
-      };
-      const request = http.request(options.url, requestOptions, (res) => {});
-      formData.pipe(request);
+  return new Promise((resolve) => {
+    fs.readdir(sourceMapPath, (err, files) => {
+      files.forEach((fileName) => {
+        const originPath = path.resolve(sourceMapPath, fileName);
+        const formData = new FormData();
+        formData.append(
+          "file",
+          fs.createReadStream(originPath),
+          `${options.project}-${options.env}-${options.version}-${fileName}`
+        );
+        const requestOptions = {
+          method: "POST",
+          headers: formData.getHeaders(),
+        };
+        const request = http.request(options.url, requestOptions, (res) => {
+          resolve();
+        });
+        formData.pipe(request);
+      });
     });
   });
 }
