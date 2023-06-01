@@ -8,17 +8,62 @@
 
 ## 运行
 
-前置：可连接的 mysql 数据库
 
-1. 运行项目以及安装依赖
+
+> 前置需要一个可连接的 mysql
+
+1. 安装依赖
 
 ```shell
 git clone https://github.com/LINGyue-dot/simple-alert.git
 yarn
-
 ```
 
-2. 
+2. 配置 mysql
+
+   1. mysql 选中数据库并执行 `packages/alert-node/db.sql`  中的创表语句
+
+   2. 在 `packages/alert-node/` 下新建 `_data.ts` 文件，该文件包含 mysql 连接的敏感信息
+
+   3. `_data.ts` 的基本样例如下：
+
+      ```js
+      module.exports = {
+        mysql: {
+          connectionLimit: 10,
+          host: "127.0.0.1", // 主机名称
+          user: "user", // mysql 连接的用户名
+          password: "password", // mysql 连接对应的密码
+          database: "alert_db", // 数据库名称
+        },
+      };
+      ```
+
+3. 打包并运行前端
+
+   1. 由于报警服务服务的是生产/测试环境，所以需要打包并代理运行
+
+   2. ```shell
+      cd package/alert-react 
+      yarn build
+      ```
+
+   3. ```shell
+      npx http-server ./build # nginx 等其余代理工具同样可以 
+      ```
+
+4. 运行后端
+
+   1. ```shell
+      cd ../alert-node 
+      yarn start
+      ```
+
+      
+
+此时打开 http-server 代理的 url 即显示如上视频展示界面项目
+
+
 
 
 
@@ -65,14 +110,14 @@ yarn
 
 除此之外，报警服务一个核心的功能就是追踪报错的源码，而在生产环境中我们一般 `devtool : false` 来关闭 source-map 的生成，所以线上的报错往往是关于打包后文件的信息以及位置。所以平台必须要持有项目对应的 source-map 。
 
-### source-map 的上传方式
+## source-map 的上传方式
 
 目前报警平台大多两种方式上传 source-map 
 
 1. webpack plugin 形式，`devtool` 设置非 false ，在 build 时候将其 source-map 上传
-2. 手动上传
+2. 手动上传（可以定制化为 ci 时候生产 sourcemap 并将其上传）
 
-由于项目一般有版本管理，所以 webpack plugin 形式更为方便
+ webpack plugin 形式更为方便
 
 > `devtool` 非 false 情况下，build 过程中还是会生成 source-map ，虽然官网上说明 `devtool : hidden-source-map` 等设置可以不被浏览器识别，但还未知是否有其他方法可以找到 source-map ，可能存在一定安全问题。
 
@@ -84,19 +129,10 @@ yarn
 
 
 
+
+
 ## 实现
 
-项目：https://ghe.tusimple.io/shunze-chen/alert-demo/blob/master/src/ErrorComponent/index.tsx
-
-SDK：https://ghe.tusimple.io/shunze-chen/alert-demo/tree/master/src/AlertSDK/core
-
-展示平台：https://ghe.tusimple.io/shunze-chen/alert-demo/tree/master/src/AlertTable
-
-Nodejs ： https://ghe.tusimple.io/shunze-chen/alert-node
-
-目前已实现除了网络请求之外的所有错误捕获，邮件通知、机器人通知还没有实现
-
-> 服务器坏了，打包老是卡死，只能录屏看看了😭
 
 
 
@@ -104,13 +140,8 @@ Nodejs ： https://ghe.tusimple.io/shunze-chen/alert-node
 
 
 
-## TODO
 
-1. 改造成 mornrepo ==> ok ，改进一下
-2. README 
-3. mysql 数据库等私密信息该怎么避免 push
-4. 抽成 SDK 打包内容
-5. 部署上去
+
 
 ## 参考
 
