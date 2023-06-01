@@ -135,13 +135,13 @@ yarn
 
 
 
+SDK ： https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-react/src/AlertSDK/core/index.ts
 
+Nodejs 报警服务：https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-node/src/index.ts
 
+WebpackPlugin： https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-react/WebpackPlugin/alertPlugin.js
 
-
-
-
-
+前端测试界面：https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-react/src/ErrorComponent/index.tsx#L23
 
 ## 参考
 
