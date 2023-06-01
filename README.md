@@ -4,9 +4,21 @@
 
 一个简单的报警系统，具备简单的报警功能
 
+![example video](https://typora-1300781048.cos.ap-beijing.myqcloud.com/img/202306011120133.mp4)
 
+## 运行
 
-<video src="https://typora-1300781048.cos.ap-beijing.myqcloud.com/img/202306011114257.mp4"></video>
+前置：可连接的 mysql 数据库
+
+1. 运行项目以及安装依赖
+
+```shell
+git clone https://github.com/LINGyue-dot/simple-alert.git
+yarn
+
+```
+
+2. 
 
 
 
