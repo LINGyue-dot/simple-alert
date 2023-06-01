@@ -4,7 +4,10 @@
 
 一个简单的报警系统，具备简单的报警功能
 
-![example video](https://typora-1300781048.cos.ap-beijing.myqcloud.com/img/202306011120133.mp4)
+
+https://github.com/LINGyue-dot/simple-alert/assets/57334095/c4847e73-9534-4725-92ad-5335476cc90d
+
+
 
 ## 运行
 
@@ -141,7 +144,7 @@ Nodejs 报警服务：https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dc
 
 WebpackPlugin： https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-react/WebpackPlugin/alertPlugin.js
 
-前端测试界面：https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-react/src/ErrorComponent/index.tsx#L23
+前端测试界面：https://github.com/LINGyue-dot/simple-alert/blob/ceb6973dce74a750372c09942b12b724487ef6f8/packages/alert-react/src/ErrorComponent/index.tsx
 
 ## 参考
 
